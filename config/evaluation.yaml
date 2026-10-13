@@ -1,0 +1,24 @@
+version: 1
+evaluation:
+  status: scaffolded-not-run
+  baseline:
+    description: same scenarios, pack modules disabled
+    how_to: use --ignore-user-config style isolation or run without adapter install
+  treatment:
+    description: pack modules active (resolved per task_type; persona as specified)
+  metrics:
+    - task_completion
+    - correctness
+    - test_pass_rate
+    - report_accuracy
+    - recovery_success
+    - unproductive_retries
+    - acceptance_criteria_compliance
+    - tool_use_accuracy
+    - conflict_recognition
+    - unwanted_regression
+  scoring:
+    rubric: evaluation/scoring-rubric.yaml
+    forbid_fake_scores: true
+    unavailable_model_policy: mark-not-run
+  scenarios: evaluation/scenarios.yaml

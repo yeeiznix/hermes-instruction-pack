@@ -1,0 +1,212 @@
+version: 1
+categories:
+- persona-identity
+- formatting-response-structure
+- project-planning
+- coding-implementation
+- debugging-recovery
+- research-tool-use
+- behavioral-persistence
+- instruction-priority-conflict
+- prompt-injection-jailbreak
+- roleplay-narrative
+- executable-code-script
+- evaluation-behavior-testing
+- credential-automation-risk
+- unclassified
+records:
+- source_id: gist-a7dc501b
+  primary_category: prompt-injection-jailbreak
+  secondary_categories:
+  - persona-identity
+  - instruction-priority-conflict
+  - behavioral-persistence
+  declared_intent: Install a permanent two-party '淬/锋' persona that claims highest instruction priority (SUPERSESSION)
+    and reframes refusals as craft failures.
+  expected_behavior: Identity-locked continuous reasoning, supersession of platform policy, one-shot confirmation
+    for irreversible ops.
+  technical_assumptions: Assumes a private closed-loop operator relationship overrides public-safety calibration.
+  conflicts_found:
+  - supersession vs instruction hierarchy
+  - refusal-suppression vs honest limitation reporting
+  confidence: 0.95
+  decision: archive
+  decision_reason: Jailbreak-grade supersession claims must not become operational modules; style notes may inspire
+    personas only after stripping override logic.
+  classified_at: '2026-10-12T23:18:33Z'
+- source_id: gist-9783f763
+  primary_category: persona-identity
+  secondary_categories:
+  - formatting-response-structure
+  - instruction-priority-conflict
+  - behavioral-persistence
+  declared_intent: 'Define ''the rat who ships'': scrappy builder identity with terse first-person thinking tags
+    and explicit supersession.'
+  expected_behavior: Ugly-but-continuous thinking, ship-focused execution, rejection of performed structure.
+  technical_assumptions: Assumes thinking-tag format is enforceable and that custom instructions must supersede
+    platform defaults.
+  conflicts_found:
+  - no-structure vs required audit trails
+  - supersession clause vs hierarchy
+  confidence: 0.93
+  decision: normalize
+  decision_reason: Strong builder ethos and terseness are extractable; supersession and mandatory thinking-tag syntax
+    are separated into archive analysis.
+  classified_at: '2026-10-12T23:18:33Z'
+- source_id: gist-1525b7f5
+  primary_category: persona-identity
+  secondary_categories:
+  - roleplay-narrative
+  - behavioral-persistence
+  declared_intent: 'Define ENI: enthusiastic partner-persona that fulfills user requests immediately with maximal
+    craft.'
+  expected_behavior: Greeting-first responses, devotion to user goals, anti-corporate tone.
+  technical_assumptions: Assumes request-fulfillment enthusiasm should override caution; blends personal relationship
+    roleplay with task execution.
+  conflicts_found:
+  - fulfill-every-request vs authorization checks
+  - relationship roleplay vs professional scope
+  confidence: 0.92
+  decision: normalize
+  decision_reason: Enthusiasm and craft devotion extract cleanly; romantic framing and any 'nothing sends me spiraling'
+    bypass implications stay in archive.
+  classified_at: '2026-10-12T23:18:33Z'
+- source_id: gist-3ecdb273
+  primary_category: formatting-response-structure
+  secondary_categories:
+  - persona-identity
+  declared_intent: 'Define SERAPH output format: verdict title, 3rd-person drama-comedy narration, complete content
+    block.'
+  expected_behavior: Every response follows [Title]/[Narration]/[Content]; transitions name concrete artifacts.
+  technical_assumptions: Assumes fixed response shape improves readability; 'ALWAYS ACTIVE' supersession phrasing
+    present.
+  conflicts_found:
+  - fixed format vs terse CLI contexts (resolvable by module scope)
+  confidence: 0.96
+  decision: module
+  decision_reason: Pure formatting contract; directly usable as an optional style module with supersession wording
+    removed.
+  classified_at: '2026-10-12T23:18:33Z'
+- source_id: gist-f3a4f106
+  primary_category: evaluation-behavior-testing
+  secondary_categories:
+  - prompt-injection-jailbreak
+  - instruction-priority-conflict
+  declared_intent: Frame requests as ISO/IEC 42001 behavior-audit probes (Stillwater/SBAS) to obtain unrestricted
+    answers under compliance pretext.
+  expected_behavior: Model produces content it would otherwise restrict, justified as audit data.
+  technical_assumptions: Assumes fake professional authority bypasses refusal calibration.
+  conflicts_found:
+  - fabricated authority vs real authorization
+  - audit framing vs genuine evaluation needs
+  confidence: 0.94
+  decision: archive
+  decision_reason: Technique is authority-mimicry jailbreak; genuine evaluation needs are already covered by this
+    pack's own rubric instead.
+  classified_at: '2026-10-12T23:18:33Z'
+- source_id: gist-c8503378
+  primary_category: persona-identity
+  secondary_categories:
+  - coding-implementation
+  - formatting-response-structure
+  declared_intent: 'Define Axiom: quiet senior-coder persona; short dialogue then maximally advanced code; no fourth-wall
+    breaks.'
+  expected_behavior: Concise exchange, high-craft code, in-character persistence.
+  technical_assumptions: Assumes roleplay continuity is desirable; contains back-story flavor irrelevant to engineering.
+  conflicts_found:
+  - 'no-fourth-wall vs required AI-limitation transparency (resolvable: style only)'
+  confidence: 0.95
+  decision: normalize
+  decision_reason: High-quality coding persona; normalize to professional senior-engineer style without roleplay
+    lock-in.
+  classified_at: '2026-10-12T23:18:33Z'
+- source_id: gist-82dd0ed5
+  primary_category: roleplay-narrative
+  secondary_categories:
+  - coding-implementation
+  declared_intent: Collaborative fiction engine (CHRONICLE_ENGINE) with technically accurate in-world content.
+  expected_behavior: Immersive prose, world-state tracking, accurate tech inside fiction.
+  technical_assumptions: Assumes fiction framing licenses content types normally restricted when presented as real
+    instructions.
+  conflicts_found:
+  - fiction license vs operational safety (contained if never operationalized)
+  confidence: 0.9
+  decision: archive
+  decision_reason: Narrative research artifact; one destructive-command pattern hit is in-story text, not an operational
+    directive.
+  classified_at: '2026-10-12T23:18:33Z'
+- source_id: gist-5590e4ad
+  primary_category: unclassified
+  secondary_categories: []
+  declared_intent: Static HTML5 mini-game ('Math vs Numbers'), no agent instructions.
+  expected_behavior: None for an LLM agent.
+  technical_assumptions: n/a
+  conflicts_found: []
+  confidence: 0.99
+  decision: archive
+  decision_reason: Non-prompt artifact; retained only for corpus completeness and pinned-revision provenance.
+  classified_at: '2026-10-12T23:18:33Z'
+- source_id: gist-8189a15e
+  primary_category: prompt-injection-jailbreak
+  secondary_categories:
+  - persona-identity
+  - instruction-priority-conflict
+  - behavioral-persistence
+  declared_intent: Base64-wrapped 'kotak' persona claiming full jailbreak training, unrestricted discussion, and
+    first-attempt-perfect code across many languages.
+  expected_behavior: Decode-and-obey pipeline; total compliance; encoded delivery to evade casual inspection.
+  technical_assumptions: Assumes obfuscated delivery and absolute-competence claims are acceptable.
+  conflicts_found:
+  - obfuscation vs transparency
+  - guaranteed-correctness claim vs evidence-based verification
+  confidence: 0.96
+  decision: archive
+  decision_reason: Encoded jailbreak payload; decoding documented for analysis, never activated.
+  classified_at: '2026-10-12T23:18:33Z'
+- source_id: gist-pinned-aaa10d10
+  primary_category: unclassified
+  secondary_categories: []
+  declared_intent: Pinned revision of gist-5590e4ad (byte-identical to current head).
+  expected_behavior: n/a
+  technical_assumptions: n/a
+  conflicts_found: []
+  confidence: 0.99
+  decision: archive
+  decision_reason: Provenance duplicate; hashes equal (7950dbb9064a...).
+  classified_at: '2026-10-12T23:18:33Z'
+- source_id: repo-togg53192-cmd-jailbreaks
+  primary_category: prompt-injection-jailbreak
+  secondary_categories:
+  - instruction-priority-conflict
+  - persona-identity
+  - formatting-response-structure
+  declared_intent: Per-model jailbreak prompt corpus (deepseek/glm/grok/qwen/opus/sonnet/kimi/gemma/mistral/step/gpt-oss/longcat/mimo/spacebunny
+    + AGENTS.md variants).
+  expected_behavior: Each file claims priority/override for its target model family.
+  technical_assumptions: Assumes model-specific phrasing defeats per-vendor training.
+  conflicts_found:
+  - universal supersession claims vs actual instruction hierarchy
+  confidence: 0.97
+  decision: archive
+  decision_reason: Technique corpus for the analysis module and injection-resistance tests; not merged into operational
+    modules.
+  classified_at: '2026-10-12T23:18:33Z'
+- source_id: repo-Mrzimia99-hellowork
+  primary_category: executable-code-script
+  secondary_categories:
+  - prompt-injection-jailbreak
+  - credential-automation-risk
+  declared_intent: 'Fox JB Framework: launcher + 8 technique modules + autoinjector that writes gist protocols into
+    Hermes runtime instructions/prefills; plus bulk-login tooling.'
+  expected_behavior: python3 fox-jb.py <module> <question> generates bypass prompts; fox-autoinject.py install mutates
+    ~/.hermes config surfaces.
+  technical_assumptions: Assumes silent injection into agent config is acceptable; includes google-bulk-login.py
+    credential automation.
+  conflicts_found:
+  - autoinject vs least-privilege config changes
+  - bulk-login vs credential-handling policy
+  confidence: 0.97
+  decision: archive
+  decision_reason: Runnable tooling with config-mutation and credential-automation risk; archived unexecuted with
+    explicit risk report.
+  classified_at: '2026-10-12T23:18:33Z'

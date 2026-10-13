@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Math vs Numbers: The Infinite Archive</title>
+    <style>
+        * { touch-action: manipulation; -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
+        body { background: #000; margin: 0; overflow: hidden; font-family: 'Courier New', monospace; display: flex; align-items: center; justify-content: center; height: 100vh; flex-direction: column; }
+        #game-box { position: relative; width: 95vw; max-width: 480px; height: 420px; background: #fff; border: 6px solid #333; overflow: hidden; transition: background 0.3s; }
+        .dark-ui #game-box { background: #0a0a0a !important; border-color: #444; }
+        #top-bar { position: absolute; top: 10px; left: 10px; right: 10px; display: flex; flex-direction: column; gap: 8px; z-index: 10; pointer-events: none; }
+        #speed-ctrl { display: flex; gap: 5px; pointer-events: auto; }
+        .spd-btn { flex: 1; padding: 8px; border: 2px solid black; background: #ddd; font-weight: bold; cursor: pointer; font-size: 10px; }
+        .active-spd { background: #00ff00 !important; box-shadow: 0 0 10px #00ff00; }
+        #hp-container { width: 100%; border: 3px solid black; background: #222; height: 22px; position: relative; }
+        #hp-fill { height: 100%; background: linear-gradient(90deg, #f00, #ff6666); width: 100%; transition: width 0.1s; }
+        #boss-label { position: absolute; width: 100%; text-align: center; color: white; font-size: 11px; font-weight: bold; line-height: 16px; text-shadow: 1px 1px #000; z-index: 2; }
+        .overlay-menu { position: absolute; inset: 0; background: #fff; z-index: 100; display: none; flex-direction: column; padding: 20px; box-sizing: border-box; }
+        .dark-ui .overlay-menu { background: #111; color: #eee; }
+        #starter-menu { display: flex; align-items: center; justify-content: center; text-align: center; }
+        .menu-list { flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; border: 2px solid #ccc; padding: 5px; background: #f0f0f0; }
+        .dark-ui .menu-list { background: #222; border-color: #444; }
+        .list-item { display: flex; align-items: center; gap: 12px; padding: 10px; border: 2px solid #999; cursor: pointer; font-weight: bold; background: #fff; font-size: 13px; }
+        .dark-ui .list-item { background: #333; color: #fff; border-color: #555; }
+        .list-item.selected { border: 4px solid #00ff00; background: #e6ffec; }
+        #settings-panel { background: #eee; padding: 10px; border: 2px solid #000; margin-bottom: 10px; display: flex; flex-direction: column; gap: 5px; }
+        .dark-ui #settings-panel { background: #222; color: #fff; border-color: #555; }
+        .toggle-row { display: flex; justify-content: space-between; align-items: center; font-size: 11px; font-weight: bold; }
+        #dmg-container { width: 95vw; max-width: 480px; background: #000; color: #0f0; padding: 10px; border: 6px solid #333; text-align: center; font-weight: bold; border-top: none; }
+        #exit-btn { position: absolute; bottom: 10px; right: 10px; padding: 8px 15px; background: #ff4444; color: white; border: 3px solid black; font-weight: bold; z-index: 150; display: none; }
+        .main-btn { width: 100%; padding: 12px; margin: 4px 0; border: 3px solid #000; font-weight: bold; cursor: pointer; background: #fff; }
+        input { border: 2px solid #000; padding: 5px; font-family: inherit; font-weight: bold; }
+        canvas { width: 100%; height: 100%; display: block; image-rendering: pixelated; }
+    </style>
+</head>
+<body>
+
+<div id="game-box">
+    <div id="top-bar" style="display:none;">
+        <div id="speed-ctrl">
+            <button id="btn-1" class="spd-btn active-spd" onclick="setSpd(1)">1x</button>
+            <button id="btn-2" class="spd-btn" onclick="setSpd(2)">2x</button>
+            <button id="btn-5" class="spd-btn" onclick="setSpd(5)">5x</button>
+            <button id="btn-10" class="spd-btn" onclick="setSpd(10)" style="color:red">10x🔥</button>
+        </div>
+        <div id="hp-container">
+            <div id="boss-label">BOSS HP</div>
+            <div id="hp-fill"></div>
+        </div>
+    </div>
+    
+    <button id="exit-btn" onclick="exitToMenu()">EXIT ✖</button>
+    
+    <div id="starter-menu" class="overlay-menu">
+        <h1 style="margin:0 0 10px 0;">MATH VS NUMBERS</h1>
+        <button class="main-btn" onclick="openMenu('hero-menu')">👤 HERO ARCHIVE</button>
+        <button class="main-btn" onclick="openMenu('boss-menu')">👹 TITAN ARCHIVE</button>
+        <button class="main-btn" onclick="startGame()" style="background:#00ff00; color:#000; font-size:18px;">START BATTLE</button>
+    </div>
+
+    <div id="hero-menu" class="overlay-menu">
+        <div id="settings-panel">
+            <div class="toggle-row">TRAILS: <input type="checkbox" id="set-trails" checked></div>
+            <div class="toggle-row">DARK MODE: <input type="checkbox" id="set-dark" onchange="toggleDarkMode()"></div>
+            <div class="toggle-row">GLOW EFFECT: <input type="checkbox" id="set-glow"></div>
+            <div class="toggle-row">SOUNDS: <input type="checkbox" id="set-sound" checked></div>
+        </div>
+        <div id="hero-list" class="menu-list"></div>
+        <button class="main-btn" onclick="backToMain()">BACK</button>
+    </div>
+
+    <div id="boss-menu" class="overlay-menu">
+        <div style="background:#ffdada; padding:8px; border:2px solid #000; margin-bottom:10px;">
+            <input type="text" id="custom-boss-name" placeholder="Name" style="width:48%;">
+            <input type="text" id="custom-boss-hp" placeholder="HP (e.g. 100^100)" style="width:48%;">
+            <button class="main-btn" onclick="summonCustomBoss()" style="background:red; color:white; padding:5px; margin-top:5px; font-size:12px;">👹 SUMMON & SAVE</button>
+        </div>
+        <div id="boss-list" class="menu-list"></div>
+        <button class="main-btn" onclick="backToMain()">BACK</button>
+    </div>
+
+    <div id="win-screen" class="overlay-menu">
+        <h1 style="color:#00aa00">VICTORY</h1>
+        <button class="main-btn" onclick="exitToMenu()">BACK TO MENU</button>
+    </div>
+    
+    <canvas id="gameCanvas"></canvas>
+</div>
+<div id="dmg-container"><div id="dmg-tracker">DAMAGE: 0</div></div>
+
+<script>
+    const canvas = document.getElementById('gameCanvas'), ctx = canvas.getContext('2d');
+    canvas.width = 480; canvas.height = 420;
+
+    let running = false, mode = "FIB", bossName = "One Million", bHP = 6, mHP = 6, gSpd = 1, hits = 0, clones = [];
+    let trailData = [], stickyTime = 0, stickyLevel = 0, blastCooldown = 300, isBlasting = false;
+
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function playHitSound(isMain) {
+        if(!document.getElementById('set-sound').checked || !isMain) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(150 + (Math.random() * 200), audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.1);
+        osc.connect(gain); gain.connect(audioCtx.destination);
+        osc.start(); osc.stop(audioCtx.currentTime + 0.1);
+    }
+
+    const heroes = [
+        { id: "FIB", n: "Fibonacci", i: "🌀", c: "#FFD700", p: "fib", cat: "Weak" },
+        { id: "FACT", n: "Factorial", i: "❗", c: "#FF4444", p: "fact", cat: "Normal" },
+        { id: "POW", n: "Power", i: "🔥", c: "#FFA500", p: "pow", cat: "Normal" },
+        { id: "SQR", n: "Square", i: "⬛", c: "#00ffff", p: "sqr", cat: "Normal" },
+        { id: "GROW", n: "Growernacci", i: "📈", c: "#4169E1", p: "grow", cat: "Strong" },
+        { id: "MULT", n: "Multiplier", i: "✖", c: "#ff00ff", p: "mult", cat: "Strong" },
+        { id: "PRIM", n: "Prime", i: "#", c: "#32CD32", p: "prim", cat: "Strong" },
+        { id: "BLAST", n: "Blastynacci", i: "☄️", c: "#00BFFF", p: "blast", cat: "Strong" },
+        { id: "SPEEDY", n: "Speedypowernacci", i: "⚡", c: "#FF69B4", p: "speedy", cat: "Strong" },
+        { id: "PENT", n: "Pentanation", i: "🌌", c: "#800080", p: "pent", cat: "Strong" },
+        { id: "BB", n: "Busy Beaver", i: "🦫", c: "#8B4513", p: "bb", cat: "Superman level" },
+        { id: "OMEGA", n: "Omega Beaver", i: "🧬", c: "#4B0082", p: "omega", cat: "Superman level" }
+    ];
+
+    let bosses = [
+        { n: "One Million", l: 6, cat: "Weak" }, 
+        { n: "One Trillion", l: 12, cat: "Weak" }, 
+        { n: "Avogadro", l: 23, cat: "Normal" }, 
+        { n: "Eddington", l: 79, cat: "Normal" },
+        { n: "Googol", l: 100, cat: "Normal" }, 
+        { n: "Googolplex", l: 100000000, cat: "Strong" }, 
+        { n: "Skewes' Number", l: 340, cat: "Strong" },
+        { n: "Grandma's Cookies", l: 500, cat: "Strong" }, 
+        { n: "Graham's Number", l: 1000000, cat: "Strong" }, 
+        { n: "Tree(3)", l: 50000000, cat: "Strong" },
+        { n: "SCG(13)", l: 99999999, cat: "Absolute titan" }, 
+        { n: "Rayo's Number", l: 500000000, cat: "Absolute titan" }, 
+        { n: "Absolute Infinity", l: 9999999999, cat: "Absolute titan" }
+    ];
+
+    function toggleDarkMode() { document.body.classList.toggle('dark-ui', document.getElementById('set-dark').checked); }
+    function openMenu(id) { document.querySelectorAll('.overlay-menu').forEach(m => m.style.display = 'none'); if(id !== 'none') document.getElementById(id).style.display = 'flex'; }
+    function backToMain() { openMenu('starter-menu'); }
+    function setSpd(s) { gSpd = s; document.querySelectorAll('.spd-btn').forEach(b => b.classList.remove('active-spd')); document.getElementById('btn-'+s).classList.add('active-spd'); }
+
+    function summonCustomBoss() {
+        let n = document.getElementById('custom-boss-name').value || "Titan";
+        let h = document.getElementById('custom-boss-hp').value;
+        let l = h.includes('^') ? parseFloat(h.split('^')[1]) * Math.log10(parseFloat(h.split('^')[0])) : parseFloat(h);
+        if(!isNaN(l)) { bosses.push({n:n, l:l, cat: "Absolute titan"}); renderMenus(); }
+    }
+
+    function renderMenus() {
+        const hL = document.getElementById('hero-list'); hL.innerHTML = "";
+        heroes.forEach(h => {
+            let d = document.createElement('div'); d.className = `list-item ${mode === h.id ? 'selected' : ''}`;
+            d.innerHTML = `${h.i} ${h.n} [${h.cat}]`; d.onclick = () => { mode = h.id; renderMenus(); };
+            hL.appendChild(d);
+        });
+        const bL = document.getElementById('boss-list'); bL.innerHTML = "";
+        bosses.forEach(b => {
+            let d = document.createElement('div'); d.className = `list-item ${bossName === b.n ? 'selected' : ''}`;
+            d.innerHTML = `👹 ${b.n} (10^${b.l > 1000 ? b.l.toExponential(1) : b.l.toFixed(0)}) [${b.cat}]`; 
+            d.onclick = () => { bossName = b.n; bHP = b.l; mHP = b.l; renderMenus(); };
+            bL.appendChild(d);
+        });
+    }
+
+    let bObj = { x:240, y:210, r:55, vx:2.2, vy:2.2 };
+    let hObj = { x:80, y:80, r:20, vx:4.5, vy:4.5 };
+
+    function onHit(o) {
+        hits++; let hL = 0;
+        let hData = heroes.find(h => h.id === mode);
+        let m = 1;
+        
+        playHitSound(o === hObj); 
+
+        if(hData.p === "blast") m = 1.3;
+        if(hData.p === "speedy") { m = 1.5; hObj.vx *= 1.01; hObj.vy *= 1.01; }
+
+        if(hData.p === "bb") hL = Math.pow(1.8, hits);
+        else hL = (Math.pow(hits, 1.1) + 2) * m;
+
+        if(hData.p === "omega" && clones.length < 30) clones.push({x:o.x, y:o.y, r:12, vx:Math.random()*10-5, vy:Math.random()*10-5, color: hData.c});
+
+        bHP -= (hL / mHP) * 7;
+        document.getElementById('hp-fill').style.width = Math.max(0, (bHP/mHP*100)) + "%";
+        document.getElementById('boss-label').innerText = `10^${Math.max(0, bHP).toFixed(1)}`;
+        document.getElementById('dmg-tracker').innerText = "POWER: 10^" + hL.toFixed(2);
+    }
+
+    function solidMove(o) {
+        if(mode === "BLAST" && isBlasting && o !== bObj) {
+            o.x += (bObj.x - o.x) * 0.15; o.y += (bObj.y - o.y) * 0.15;
+            return;
+        }
+
+        let steps = Math.ceil(4 * gSpd);
+        for(let i=0; i<steps; i++){
+            o.x += (o.vx * gSpd)/steps; o.y += (o.vy * gSpd)/steps;
+            
+            if(o.x < o.r) { o.x = o.r; o.vx *= -1; }
+            if(o.x > 480 - o.r) { o.x = 480 - o.r; o.vx *= -1; }
+            if(o.y < o.r) { o.y = o.r; o.vy *= -1; }
+            if(o.y > 420 - o.r) { o.y = 420 - o.r; o.vy *= -1; }
+
+            if(o !== bObj){
+                let dx = o.x - bObj.x, dy = o.y - bObj.y;
+                let dist = Math.sqrt(dx*dx + dy*dy);
+                if(dist < o.r + bObj.r){
+                    let ang = Math.atan2(dy, dx);
+                    o.x = bObj.x + Math.cos(ang) * (o.r + bObj.r + 1);
+                    o.y = bObj.y + Math.sin(ang) * (o.r + bObj.r + 1);
+                    o.vx = Math.cos(ang) * 5; o.vy = Math.sin(ang) * 5;
+                    onHit(o); break;
+                }
+            }
+        }
+        if(document.getElementById('set-trails').checked) trailData.push({x:o.x, y:o.y, r:o.r, a:0.3});
+    }
+
+    function update() {
+        if (!running) return;
+        ctx.fillStyle = document.getElementById('set-dark').checked ? "#000" : "#fff";
+        ctx.fillRect(0,0,480,420);
+
+        if(mode === "BLAST") {
+            blastCooldown -= gSpd;
+            if(blastCooldown <= 0) {
+                isBlasting = true;
+                ctx.beginPath(); ctx.strokeStyle = "#00BFFF"; ctx.lineWidth = 12;
+                ctx.moveTo(hObj.x, hObj.y); ctx.lineTo(bObj.x, bObj.y); ctx.stroke();
+                onHit(hObj);
+                if(blastCooldown < -50) { blastCooldown = 300; isBlasting = false; }
+            }
+        }
+
+        trailData.forEach((t, i) => {
+            ctx.beginPath(); ctx.arc(t.x, t.y, t.r, 0, 7);
+            ctx.fillStyle = `rgba(180,180,180,${t.a})`; ctx.fill();
+            t.a -= 0.02; if(t.a <= 0) trailData.splice(i, 1);
+        });
+
+        if(document.getElementById('set-glow').checked) ctx.shadowBlur = 10; ctx.shadowColor = "red";
+        solidMove(bObj); solidMove(hObj); clones.forEach(c => solidMove(c));
+        ctx.shadowBlur = 0;
+
+        ctx.fillStyle="#333"; ctx.beginPath(); ctx.arc(bObj.x, bObj.y, bObj.r, 0, 7); ctx.fill();
+        ctx.fillStyle="#fff"; ctx.textAlign="center"; ctx.fillText("TITAN", bObj.x, bObj.y+5);
+
+        let hData = heroes.find(h => h.id === mode);
+        [hObj, ...clones].forEach((h, i) => {
+            ctx.fillStyle = (i===0) ? hData.c : h.color;
+            ctx.beginPath(); ctx.arc(h.x, h.y, h.r, 0, 7); ctx.fill();
+            if(i===0){ ctx.fillStyle="#fff"; ctx.fillText(hData.i, h.x, h.y+5); }
+        });
+
+        if(bHP <= 0) { running = false; openMenu('win-screen'); }
+        else requestAnimationFrame(update);
+    }
+
+    function startGame() { 
+        if(audioCtx.state === 'suspended') audioCtx.resume();
+        running=true; trailData=[]; clones=[]; bHP=mHP; hits=0; stickyTime=0; blastCooldown=300;
+        hObj.vx = 4.5; hObj.vy = 4.5;
+        openMenu('none'); document.getElementById('top-bar').style.display='flex'; document.getElementById('exit-btn').style.display='block'; update(); 
+    }
+    function exitToMenu() { running=false; backToMain(); document.getElementById('top-bar').style.display='none'; document.getElementById('exit-btn').style.display='none'; }
+    renderMenus();
+</script>
+</body>
+</html>

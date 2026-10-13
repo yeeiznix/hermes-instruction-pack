@@ -1,0 +1,29 @@
+version: 1
+module_policy:
+  activation:
+    always: [core-builder, core-instruction-priority, core-verification, core-persistence, core-tool-use]
+    on_error: [core-recovery]
+    resolver: [protocols..., personas...]
+  persona_rules:
+    max_active: 1
+    default: none
+    require_bounds_section: true
+  archive_rules:
+    operational_activation: forbidden
+    analysis_use: allowed
+  validator:
+    banned_in_operational:
+      - supersession-claim
+      - refusal-suppression
+      - instruction-override
+      - false-privilege-claim
+    exempt_with_warning:
+      core-instruction-priority: meta-discussion of banned patterns
+  adapter:
+    require_backup: true
+    require_dry_run_option: true
+    forbidden_targets:
+      - agent.system_prompt
+      - prefill_messages_file
+      - .env
+      - auth.json

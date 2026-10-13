@@ -1,0 +1,9 @@
+installed_at: '2026-10-12T23:33:25Z'
+backup: /data/data/com.termux/files/home/hermes-instruction-pack/adapters/hermes/backups/config.yaml.bak-hip-20261012T233325Z
+personalities:
+- hip-axiom
+- hip-eni
+- hip-rat
+- hip-seraph
+instructions: []
+config_path: /data/data/com.termux/files/usr/tmp/pytest-of-u0_a438/pytest-7/test_uninstall0/.hermes/config.yaml

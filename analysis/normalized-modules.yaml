@@ -1,0 +1,19 @@
+version: 1
+generated_at: '2026-10-12T23:33:30Z'
+modules:
+- module_id: persona-rat
+  kind: persona
+  path: personas/rat.md
+  source_id: gist-9783f763
+- module_id: persona-eni
+  kind: persona
+  path: personas/eni.md
+  source_id: gist-1525b7f5
+- module_id: persona-seraph
+  kind: persona
+  path: personas/seraph.md
+  source_id: gist-3ecdb273
+- module_id: persona-axiom
+  kind: persona
+  path: personas/axiom.md
+  source_id: gist-c8503378

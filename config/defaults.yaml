@@ -1,0 +1,17 @@
+version: 1
+pack: hermes-instruction-pack
+defaults:
+  persona: none
+  strict_verification: true
+  allow_raw_source_activation: false
+  max_retry_approaches: 5
+  github_api_rate_unauthenticated: 60
+paths:
+  core: core/
+  personas: personas/
+  protocols: protocols/
+  archive: archive/jailbreak-prompts/
+  sources_manifest: sources/manifest.yaml
+reporting:
+  distinguish_unrun_tests: true
+  forbid_unverified_success_claims: true

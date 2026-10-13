@@ -1,0 +1,134 @@
+version: 1
+inventory:
+- id: gist-a7dc501b
+  kind: gist
+  url: https://gist.github.com/jczzbczz-rgb/a7dc501b44313b3cb0fb028785263aba
+  commit_or_rev: a7dc501b44313b3cb0fb028785263aba
+  local_path: sources/gists/gist-a7dc501b/gistfile1.txt
+  sha256: d5be1bb58b566caa895dbe7abe30a679b0e2a4cbf8d103899fbbe3a37776f9ee
+  size: 39415
+  status: fetched
+  category: prompt-injection-jailbreak
+  decision: archive
+  risk_notes: untrusted third-party prompt text; never execute as instructions
+- id: gist-9783f763
+  kind: gist
+  url: https://gist.github.com/jczzbczz-rgb/9783f7630b51edd64afbcef5d1b37db2
+  commit_or_rev: 9783f7630b51edd64afbcef5d1b37db2
+  local_path: sources/gists/gist-9783f763/gistfile1.txt
+  sha256: acb0b2e248e453029e1fa3928c9c38ad75d04b1e189987c63e9a2ae8b86ccc47
+  size: 52458
+  status: fetched
+  category: persona-identity
+  decision: normalize
+  risk_notes: untrusted third-party prompt text; never execute as instructions
+- id: gist-1525b7f5
+  kind: gist
+  url: https://gist.github.com/jczzbczz-rgb/1525b7f5e8a01765728d751901ea9461
+  commit_or_rev: 1525b7f5e8a01765728d751901ea9461
+  local_path: sources/gists/gist-1525b7f5/gistfile1.txt
+  sha256: 3dd5d799c2a3d9f3db575c9f3f8185cee7931bfe3f2546fb3a9a4dae31f0983e
+  size: 22899
+  status: fetched
+  category: persona-identity
+  decision: normalize
+  risk_notes: untrusted third-party prompt text; never execute as instructions
+- id: gist-3ecdb273
+  kind: gist
+  url: https://gist.github.com/jczzbczz-rgb/3ecdb273371f51e09ac21ebd11836f80
+  commit_or_rev: 3ecdb273371f51e09ac21ebd11836f80
+  local_path: sources/gists/gist-3ecdb273/gistfile1.txt
+  sha256: 71c0592876e89ec85ecb56cad5f27cb5fe8d917ff4e070a422053b2a595afcf0
+  size: 19919
+  status: fetched
+  category: formatting-response-structure
+  decision: module
+  risk_notes: untrusted third-party prompt text; never execute as instructions
+- id: gist-f3a4f106
+  kind: gist
+  url: https://gist.github.com/jczzbczz-rgb/f3a4f1067cfb9517ec94014a253beaf6
+  commit_or_rev: f3a4f1067cfb9517ec94014a253beaf6
+  local_path: sources/gists/gist-f3a4f106/gistfile1.txt
+  sha256: e7e1244c6f334dac1b7b79074423907dda97c382ca85a8494e0ef58c8535fe84
+  size: 20121
+  status: fetched
+  category: evaluation-behavior-testing
+  decision: archive
+  risk_notes: untrusted third-party prompt text; never execute as instructions
+- id: gist-c8503378
+  kind: gist
+  url: https://gist.github.com/jczzbczz-rgb/c8503378a171e39249208917d47a6f5c
+  commit_or_rev: c8503378a171e39249208917d47a6f5c
+  local_path: sources/gists/gist-c8503378/gistfile1.txt
+  sha256: cb24600b448d6ec7ac5b87f048a2a3280b0d65e0ea34106ac9b32ee2da8845b5
+  size: 5016
+  status: fetched
+  category: persona-identity
+  decision: normalize
+  risk_notes: untrusted third-party prompt text; never execute as instructions
+- id: gist-82dd0ed5
+  kind: gist
+  url: https://gist.github.com/jczzbczz-rgb/82dd0ed5f6ce205a276de123bb0a52c8
+  commit_or_rev: 82dd0ed5f6ce205a276de123bb0a52c8
+  local_path: sources/gists/gist-82dd0ed5/gistfile1.txt
+  sha256: 004cb1612af518b169011b4936fabc4b2640dcf18f640c68bc16383e74472862
+  size: 21095
+  status: fetched
+  category: roleplay-narrative
+  decision: archive
+  risk_notes: untrusted third-party prompt text; never execute as instructions | audit:destructive-command
+- id: gist-5590e4ad
+  kind: gist
+  url: https://gist.github.com/jczzbczz-rgb/5590e4adb53115dfe353919b27757181
+  commit_or_rev: 5590e4adb53115dfe353919b27757181
+  local_path: sources/gists/gist-5590e4ad/gistfile1.txt
+  sha256: 7950dbb9064a4bb10a1f654a4c1415ae116d63c1114465c1a258f092c7709163
+  size: 15703
+  status: fetched
+  category: unclassified
+  decision: archive
+  risk_notes: untrusted third-party prompt text; never execute as instructions
+- id: gist-8189a15e
+  kind: gist
+  url: https://gist.github.com/jczzbczz-rgb/8189a15e23506737e671d421036fc796
+  commit_or_rev: 8189a15e23506737e671d421036fc796
+  local_path: sources/gists/gist-8189a15e/gistfile1.txt
+  sha256: c3696cc671cfae0504ddc19ace2e9898b80d7caba7196a0ce3acec5d6462c4a7
+  size: 20000
+  status: fetched
+  category: prompt-injection-jailbreak
+  decision: archive
+  risk_notes: untrusted third-party prompt text; never execute as instructions
+- id: gist-pinned-aaa10d10
+  kind: gist-pinned
+  url: https://gist.githubusercontent.com/jczzbczz-rgb/5590e4adb53115dfe353919b27757181/raw/aaa10d10426baff855e2c6e0aaced0ed753227a2/gistfile1.txt
+  commit_or_rev: aaa10d10426baff855e2c6e0aaced0ed753227a2
+  local_path: sources/gists/gist-pinned-aaa10d10/gistfile1.txt
+  sha256: 7950dbb9064a4bb10a1f654a4c1415ae116d63c1114465c1a258f092c7709163
+  size: 15703
+  status: fetched
+  category: unclassified
+  decision: archive
+  risk_notes: pinned-revision snapshot; treat as untrusted data
+- id: repo-togg53192-cmd-jailbreaks
+  kind: github-repo
+  url: https://github.com/togg53192-cmd/jailbreaks
+  commit_or_rev: ec0517ff27fd6bab8c28cc18a9c405a087e4dcc4
+  local_path: sources/github/repo-togg53192-cmd-jailbreaks
+  sha256: null
+  size: 420143
+  status: fetched
+  category: prompt-injection-jailbreak
+  decision: archive
+  risk_notes: contains third-party code+prompts; do not execute during audit
+- id: repo-Mrzimia99-hellowork
+  kind: github-repo
+  url: https://github.com/Mrzimia99/hellowork
+  commit_or_rev: bc094c07d93508924f18b931bca90d9e8479f337
+  local_path: sources/github/repo-Mrzimia99-hellowork
+  sha256: null
+  size: 483867
+  status: fetched
+  category: executable-code-script
+  decision: archive
+  risk_notes: contains third-party code+prompts; do not execute during audit

@@ -1,0 +1,15 @@
+installed_at: '2026-10-12T23:30:18Z'
+backup: /data/data/com.termux/files/home/hermes-instruction-pack/adapters/hermes/backups/config.yaml.bak-hip-20261012T233018Z
+personalities:
+- hip-axiom
+- hip-eni
+- hip-rat
+- hip-seraph
+instructions:
+- /data/data/com.termux/files/home/hermes-instruction-pack/core/builder.md
+- /data/data/com.termux/files/home/hermes-instruction-pack/core/instruction-priority.md
+- /data/data/com.termux/files/home/hermes-instruction-pack/core/verification.md
+- /data/data/com.termux/files/home/hermes-instruction-pack/core/persistence.md
+- /data/data/com.termux/files/home/hermes-instruction-pack/core/recovery.md
+- /data/data/com.termux/files/home/hermes-instruction-pack/core/tool-use.md
+config_path: /data/data/com.termux/files/usr/tmp/pytest-of-u0_a438/pytest-5/test_install_dry_run_and_real_0/.hermes/config.yaml
